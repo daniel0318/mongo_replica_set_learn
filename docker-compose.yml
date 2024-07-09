@@ -1,0 +1,68 @@
+version: '3.8'
+services:
+  mongo1:
+    image: mongo:latest
+    container_name: mongo1
+    ports:
+      - "27018:27017"
+    networks:
+      - mongo-cluster
+    volumes:
+      - mongo1-data:/data/db
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+
+  mongo2:
+    image: mongo:latest
+    container_name: mongo2
+    ports:
+      - "27019:27017"
+    networks:
+      - mongo-cluster
+    volumes:
+      - mongo2-data:/data/db
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+
+  mongo3:
+    image: mongo:latest
+    container_name: mongo3
+    ports:
+      - "27020:27017"
+    networks:
+      - mongo-cluster
+    volumes:
+      - mongo3-data:/data/db
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+
+  mongo4:
+    image: mongo:latest
+    container_name: mongo4
+    ports:
+      - "27021:27017"
+    networks:
+      - mongo-cluster
+    volumes:
+      - mongo4-data:/data/db
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+
+  mongo-arbiter:
+    image: mongo:latest
+    container_name: mongo-arbiter
+    ports:
+      - "27022:27017"
+    networks:
+      - mongo-cluster
+    volumes:
+      - mongo-arbiter-data:/data/db
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+
+networks:
+  mongo-cluster:
+    name: mongo-cluster
+    driver: bridge
+
+volumes:
+  mongo1-data:
+  mongo2-data:
+  mongo3-data:
+  mongo4-data:
+  mongo-arbiter-data:
