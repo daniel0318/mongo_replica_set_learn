@@ -2,9 +2,9 @@
 
 - In order to know basic about replica set and read/write concern
 - Use docker-compose to demo MongoDB replica set environment
-- Then practice different read/write how to adjust AP / CP
+- Then test how read/write behaves when some secondary nodes crashed
 
-<img width="400" alt="image" src="https://github.com/daniel0318/mongo_replica_set_learn/assets/10074834/b1e6e88f-c039-44f4-9f0e-97d2982896e3">
+<img width="567" alt="image" src="https://github.com/daniel0318/mongo_replica_set_learn/assets/10074834/c1390299-e7c9-4a34-ae3d-9b91a781ac0d">
 
 ### Launch Services
 - clone & setup environment
