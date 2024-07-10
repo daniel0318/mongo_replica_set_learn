@@ -39,6 +39,17 @@ the failed one is expected timeout
 - use pytest to test how read/write concern behave when some secondary nodes disconnect
 - arbiter will handle voting the primary, when over half nodes lost connection
 
+def test_write_majority_w1:
+- when disconnect 2 nodes, write=1 pass
+- when disconnect 2 nodes, write=majority blocked
+  
+def test_read_majority_w1:
+- read=local will get self node value
+- read=majority will get >=half node value, so need a while to wait nodes sync value
+- after >= half nodes lost connection, read=majority only read those values when majority nodes alive, ignore values inserted after nodes crash
+
+## conclusion
 1. write=1 and read=local will respond quickly but ignore other node's value or eventually changed to correct value after a while
 2. write=majority will block when >=half nodes down
 3. read=majority won't show values not sync with >= half nodes
+
